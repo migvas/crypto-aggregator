@@ -140,10 +140,47 @@ When the application is running, you can access:
 - **Interactive API docs**: http://localhost:8000/docs
 - **ReDoc documentation**: http://localhost:8000/redoc
 
+## Testing
+
+This project includes a comprehensive test suite.
+
+### Running Tests
+
+Run all tests:
+```bash
+pytest tests/
+```
+
+Run tests with verbose output:
+```bash
+pytest tests/ -v
+```
+
+Run tests with coverage report:
+```bash
+pytest tests/ --cov=app --cov-report=term-missing
+```
+
+Generate HTML coverage report:
+```bash
+pytest tests/ --cov=app --cov-report=html
+# Open htmlcov/index.html in your browser
+```
+
+### Test Structure
+
+- **`tests/test_providers.py`**: Unit tests for individual provider classes (CoinGecko, Binance, Coinbase)
+- **`tests/test_aggregator.py`**: Tests for the ProviderAggregator logic and data normalization
+- **`tests/test_main.py`**: Tests for FastAPI endpoints and request handling
+
+For more details, see [`tests/README.md`](tests/README.md).
+
 ## Requirements
 
 - Python >= 3.12
 - FastAPI
 - httpx (for async HTTP requests)
 - requests (for sync HTTP requests)
-
+- pytest (for testing)
+- pytest-asyncio (for async tests)
+- pytest-cov (for coverage reports)
